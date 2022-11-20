@@ -25,6 +25,31 @@ namespace Fitness
         {
             DataBaseSitUpsContext dataBaseSitUpsContext = new();
             SitUpOrder.ItemsSource = dataBaseSitUpsContext.DataBaseSitUps.ToList();
+
+            double[] touch1X = dataBaseSitUpsContext.DataBaseSitUps.Select(x => (double)x.Id).ToArray();
+            double[] touch1Y = dataBaseSitUpsContext.DataBaseSitUps.Select(x => (double)x.First_approach).ToArray();
+            touch1.Plot.AddScatter(touch1X, touch1Y);
+            touch1.Refresh();
+
+            double[] touch2X = dataBaseSitUpsContext.DataBaseSitUps.Select(x => (double)x.Id).ToArray();
+            double[] touch2Y = dataBaseSitUpsContext.DataBaseSitUps.Select(x => (double)x.Second_approach).ToArray();
+            touch2.Plot.AddScatter(touch2X, touch2Y);
+            touch2.Refresh();
+
+            double[] touch3X = dataBaseSitUpsContext.DataBaseSitUps.Select(x => (double)x.Id).ToArray();
+            double[] touch3Y = dataBaseSitUpsContext.DataBaseSitUps.Select(x => (double)x.Third_approach).ToArray();
+            touch3.Plot.AddScatter(touch3X, touch3Y);
+            touch3.Refresh();
+
+            double[] touch4X = dataBaseSitUpsContext.DataBaseSitUps.Select(x => (double)x.Id).ToArray();
+            double[] touch4Y = dataBaseSitUpsContext.DataBaseSitUps.Select(x => (double)x.Fourth_approach).ToArray();
+            touch4.Plot.AddScatter(touch4X, touch4Y);
+            touch4.Refresh();
+
+            double[] touch5X = dataBaseSitUpsContext.DataBaseSitUps.Select(x => (double)x.Id).ToArray();
+            double[] touch5Y = dataBaseSitUpsContext.DataBaseSitUps.Select(x => (double)x.Fiveth_approach).ToArray();
+            touch5.Plot.AddScatter(touch5X, touch5Y);
+            touch5.Refresh();
         }
         public void ClearText()
         {
@@ -56,11 +81,11 @@ namespace Fitness
                 DataBaseSitUpsContext db = new();
                 DataBaseSitUp tim = new DataBaseSitUp
                 {
-                    First_approach = firstP.Text,
-                    Second_approach = secondP.Text,
-                    Third_approach = thirdP.Text,
-                    Fourth_approach = fourP.Text,
-                    Fiveth_approach = fiveP.Text,
+                    First_approach = Convert.ToDouble(firstP.Text),
+                    Second_approach = Convert.ToDouble(secondP.Text),
+                    Third_approach = Convert.ToDouble(thirdP.Text),
+                    Fourth_approach = Convert.ToDouble(fourP.Text),
+                    Fiveth_approach = Convert.ToDouble(fiveP.Text),
                     Date = DateTime.Now.ToString()
                 };
 
@@ -75,6 +100,46 @@ namespace Fitness
             MainWindow mainWindow = new();
             mainWindow.Show();
             this.Close();
+        }
+        private void clear_Click(object sender, RoutedEventArgs e)
+        {
+            ClearText();
+        }
+        private void delete_Click(object sender, RoutedEventArgs e)
+        {
+            DataBaseSitUpsContext db = new();
+            if (TextArea.Text == "")
+            {
+                DownTrayBuyerOrders.Content = "Не ввели номер!";
+                DownTrayBuyerOrders.Background = Brushes.LightCoral;
+            }
+            else
+            {
+                TextArea.Text = TextArea.Text.Trim();
+                int key = Convert.ToInt32(TextArea.Text.Trim());
+                var item = db.DataBaseSitUps.Find(key);
+                if (item != null)
+                {
+
+                    db.DataBaseSitUps.Remove(item);
+                    db.SaveChanges();
+                    Update();
+                    DownTrayBuyerOrders.Background = Brushes.LightGreen;
+                    DownTrayBuyerOrders.Content = "Удалена запись --" + TextArea.Text;
+                    TextArea.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("Введена некорректная цифра!");
+                }
+            }
+        }
+        private void PreviewIdInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!char.IsDigit(e.Text, 0))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

@@ -7,19 +7,15 @@
         mc:Ignorable="d"
         Title="PushUp" Height="768" Width="1024" WindowState="Maximized">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="200"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="270"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="20"></RowDefinition>
         </Grid.RowDefinitions>
         <!--//Заголовок Заказы Покупаткля-->
+
         <Border
-            Grid.Row="2"
+            Grid.Row="3"
             Grid.Column="0"
             Grid.ColumnSpan="10"
             BorderBrush="LightGray"
@@ -38,7 +34,7 @@
         <Grid
             Grid.Column="0"
             Grid.Row="0"
-            Grid.ColumnSpan="3">
+            Grid.ColumnSpan="5">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
@@ -48,19 +44,43 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="150"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
                 </Grid.RowDefinitions>
+
+                <WpfPlot 
+            Grid.Row="2"
+            Grid.Column="0"
+            Name="touch1" />
+                <WpfPlot 
+            Grid.Row="2"
+            Grid.Column="1"
+            Name="touch2" />
+                <WpfPlot 
+            Grid.Row="2"
+            Grid.Column="2"
+            Name="touch3" />
+                <WpfPlot 
+            Grid.Row="2"
+            Grid.Column="3"
+            Name="touch4" />
+                <WpfPlot 
+            Grid.Row="2"
+            Grid.Column="4"
+            Name="touch5" />
                 <Label
                     Grid.Row="0"
                     Grid.Column="0"
                     Content="1 подход"
                     FontSize="28"
                     VerticalContentAlignment="Center"
-                    HorizontalContentAlignment="Center">
+                    HorizontalContentAlignment="Center"
+                    Padding="1 1 1 1">
                 </Label>
                 <Label
+                    Padding="1 1 1 1"
                     Grid.Row="0"
                     Grid.Column="4"
                     Content="5 подход"
@@ -69,6 +89,7 @@
                     HorizontalContentAlignment="Center">
                 </Label>
                 <Label
+                    Padding="1 1 1 1"
                     Grid.Row="0"
                     Grid.Column="1"
                     Content="2 подход"
@@ -77,6 +98,7 @@
                     HorizontalContentAlignment="Center">
                 </Label>
                 <Label
+                    Padding="1 1 1 1"
                     Grid.Row="0"
                     Grid.Column="2"
                     Content="3 подход"
@@ -85,6 +107,7 @@
                     HorizontalContentAlignment="Center">
                 </Label>
                 <Label
+                    Padding="1 1 1 1"
                     Grid.Row="0"
                     Grid.Column="3"
                     Content="4 подход"
@@ -93,6 +116,10 @@
                     HorizontalContentAlignment="Center">
                 </Label>
                 <TextBox
+                    TextCompositionManager.PreviewTextInput="PreviewIdInput"
+                    Padding="1 1 1 1"
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center"
                     x:Name="firstP"
                     Grid.Column="0"
                     Grid.Row="1"
@@ -101,6 +128,10 @@
                     FontSize="28">
                 </TextBox>
                 <TextBox
+                    TextCompositionManager.PreviewTextInput="PreviewIdInput"
+                    Padding="1 1 1 1"
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center"
                     x:Name="secondP"
                     Grid.Column="1"
                     Grid.Row="1"
@@ -109,6 +140,10 @@
                     FontSize="28">
                 </TextBox>
                 <TextBox
+                    TextCompositionManager.PreviewTextInput="PreviewIdInput"
+                    Padding="1 1 1 1"
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center"
                     x:Name="thirdP"
                     Grid.Column="2"
                     Grid.Row="1"
@@ -117,6 +152,10 @@
                     FontSize="28">
                 </TextBox>
                 <TextBox
+                    TextCompositionManager.PreviewTextInput="PreviewIdInput"
+                    Padding="1 1 1 1"
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center"
                     x:Name="fourP"
                     Grid.Column="3"
                     Grid.Row="1"
@@ -125,6 +164,10 @@
                     FontSize="28">
                 </TextBox>
                 <TextBox
+                    TextCompositionManager.PreviewTextInput="PreviewIdInput"
+                    Padding="1 1 1 1"
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center"
                     x:Name="fiveP"
                     Grid.Column="4"
                     Grid.Row="1"
@@ -133,21 +176,61 @@
                     FontSize="28">
                 </TextBox>
                 <Button
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    Padding="1 1 1 1"
+                    Margin="2 2 2 2"
                     Click="submit_Click"
                     x:Name="submit"
                     Grid.Column="4"
-                    Grid.Row="2"
+                    Grid.Row="3"
                     Content="Сохранить"
-                    FontSize="28">
+                    FontSize="24">
 
                 </Button>
                 <Button
+                    Margin="2 2 2 2"
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    Padding="1 1 1 1"
                     Click="back_Click"
                     x:Name="back"
                     Grid.Column="0"
-                    Grid.Row="2"
+                    Grid.Row="3"
                     Content="Назад"
-                    FontSize="28">
+                    FontSize="24">
+
+                </Button>
+                <Button
+                    Margin="2 2 2 2"
+                    VerticalContentAlignment="Top"
+                    HorizontalContentAlignment="Center"
+                    Click="clear_Click"
+                    Grid.Column="3"
+                    Grid.Row="3"
+                    Content="Очистить"
+                    FontSize="24">
+
+                </Button>
+                <TextBox
+                    x:Name="TextArea"
+                    Margin="2 2 2 2"
+                    TextCompositionManager.PreviewTextInput="PreviewIdInput"
+                    HorizontalContentAlignment="Center"
+                    Grid.Column="1"
+                    Grid.Row="3"
+                    FontSize="24">
+                    
+                </TextBox>
+                <Button
+                    Margin="2 2 2 2"
+                    VerticalContentAlignment="Top"
+                    HorizontalContentAlignment="Center"
+                    Click="delete_Click"
+                    Grid.Column="2"
+                    Grid.Row="3"
+                    Content="Удалить"
+                    FontSize="24">
 
                 </Button>
             </Grid>
@@ -155,7 +238,7 @@
         <DataGrid 
             Grid.Row="1" 
             Grid.Column="0"
-            Grid.ColumnSpan="3" 
+            Grid.ColumnSpan="5" 
             VerticalScrollBarVisibility="Auto"
             x:Name="PushUpOrder" 
             FontSize="14" 
@@ -164,6 +247,15 @@
             FontFamily="Segoe UI"
             HorizontalScrollBarVisibility="Auto">
             <DataGrid.Columns>
+                <DataGridTextColumn
+                    x:Name="ID"
+                    FontWeight="Light"
+                    Binding="{Binding Id}"  
+                    IsReadOnly="True" 
+                    Header="№" 
+                    Width="30"
+                    FontFamily="Segoe UI">
+                </DataGridTextColumn>
                 <DataGridTextColumn
                     x:Name="Date"
                     FontWeight="Light"
